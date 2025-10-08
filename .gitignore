@@ -13,8 +13,10 @@ heart2bot_env/
 # data and models (we don't upload them)
 data/*
 !data/.gitkeep
+!data/**/.gitkeep
 models/*
 !models/.gitkeep
+!models/**/.gitkeep
 
 # notebooks
 *.ipynb_checkpoints
