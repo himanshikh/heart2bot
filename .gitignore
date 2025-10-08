@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+
+# virtual environments
+.env
+.venv/
+venv/
+heart2bot_env/
+
+# data and models (we don't upload them)
+data/*
+!data/.gitkeep
+models/*
+!models/.gitkeep
+
+# notebooks
+*.ipynb_checkpoints
