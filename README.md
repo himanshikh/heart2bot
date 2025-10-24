@@ -43,23 +43,6 @@ User Input
 
 ---
 
-## Tech Stack
-
-**Python**, **PyTorch**, **Hugging Face Transformers**, **PEFT (LoRA)**  
-APIs: **OpenAI GPT**, **Streamlit/Gradio (for UI)**  
-Hardware: GPU (A100 / RTX 3090), 32+ GB RAM  
-
----
-
-## Team Members
-
-| Member | ID | Role |
-|---------|----|------|
-| **Himanshi** | 12340940 | Persona Extraction & Memory (PAL-inspired) |
-| **Vaishnavi Pawar** | 12342300 | Emotion Recognition & Strategy Reasoning |
-| **Shared** | — | Self-Chats, Model Training, Integration & Evaluation |
-
----
 
 ## Expected Outcomes
 
