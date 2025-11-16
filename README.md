@@ -5,15 +5,15 @@
 
 Overview
 
-This project presents a framework for building emotionally supportive, persona-aware, and interpretable dialogue systems. The system combines persona extraction, chain-of-thought (CoT) reasoning, and CoT-guided response generation to provide contextually aware and empathetic responses. It supports both pre-generated datasets and live interactive chat with dynamic persona updates.
+This project presents a framework for building emotionally supportive, persona-aware, and interpretable dialogue systems. The system combines persona extraction, chain-of-thought (CoT) reasoning, and CoT-guided response generation to provide contextually aware and empathetic responses.
 
-Our approach improves upon existing frameworks (PAL, ESCoT, ESConv) by:
+Key advantages of this approach:
 
-Summarizing personas into key sentences to reduce redundancy.
+Summarizes personas into key sentences to reduce redundancy.
 
-Generating CoT reasoning and strategy-aligned responses at scale.
+Generates CoT reasoning and strategy-aligned responses at scale.
 
-Enabling efficient single-GPU training and inference with LLaMA-2-7B.
+Enables efficient single-GPU training and inference with LLaMA-2-7B.
 
 Key Features
 
@@ -43,7 +43,14 @@ Persona Summarization:
 
 Extracts key sentences, personality traits, interests, and values.
 
-Uses HuggingFace Transformers pipelines (sentiment-analysis, j-hartmann/emotion-english-distilroberta-base) to detect sentiment and emotions for persona encoding.
+Uses HuggingFace Transformers pipelines:
+
+from transformers import pipeline
+sentiment_model = pipeline("sentiment-analysis")
+emotion_model = pipeline("text-classification",
+                         model="j-hartmann/emotion-english-distilroberta-base",
+                         return_all_scores=False)
+
 
 CoT Generation:
 
@@ -86,7 +93,6 @@ conversation_memory = {
     "history": deque(maxlen=10)
 }
 
-# Functions: update_persona(user_text), generate_supporter_response(user_message, memory)
 # Chat loop example
 while True:
     user_input = input("You: ")
@@ -104,9 +110,9 @@ Ablation Study
 
 Removing persona information significantly reduced response quality and empathy.
 
-Evaluation metrics comparing responses with and without persona:
+Metrics comparing responses with and without persona:
 
-Metric	Score (With Persona)	Score (Without Persona)
+Metric	With Persona	Without Persona
 Semantic similarity (cosine)	0.392	0.28
 Sentiment polarity diff	0.58	0.72
 Smoothed BLEU score	0.006	0.001
@@ -116,7 +122,7 @@ Persona summarization reduces memory usage and improves contextual relevance.
 
 Limitations
 
-Model is smaller than GPT-4, so some nuanced responses may be less fluent.
+Smaller model compared to GPT-4, so some nuanced responses may be less fluent.
 
 Single-GPU training reduces computation cost but limits scale.
 
@@ -138,4 +144,4 @@ Includes: adapter_model.safetensors, optimizer.pt, scheduler.pt, tokenizer.model
 
 Conclusion
 
-This framework enables persona-aware, CoT-guided emotional support conversation generation on multiple datasets while remaining lightweight and deployable on a single GPU. It successfully balances interpretability, empathy, and computational efficiency, and serves as a foundation for future improvements using larger models or more diverse datasets.
+This framework enables persona-aware, CoT-guided emotional support conversation generation on multiple datasets while remaining lightweight and deployable on a single GPU. It successfully balances interpretability, empathy, and computational efficiency, serving as a foundation for future improvements using larger models or more diverse datasets.
